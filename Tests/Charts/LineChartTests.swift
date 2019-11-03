@@ -27,7 +27,7 @@ class LineChartTests: FBSnapshotTestCase
             entries.append(ChartDataEntry(x: Double(i), y: value, icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
         }
         
-        dataSet = LineChartDataSet(entries: entries, label: "First unit test data")
+        dataSet = LineChartDataSet(values: entries, label: "First unit test data")
         dataSet.drawIconsEnabled = false
         dataSet.iconsOffset = CGPoint(x: 0, y: 20.0)
 
@@ -46,36 +46,36 @@ class LineChartTests: FBSnapshotTestCase
     
     func testDefaultValues()
     {
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testHidesValues()
     {
         dataSet.drawValuesEnabled = false
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testDoesntDrawCircles()
     {
         dataSet.drawCirclesEnabled = false
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testIsCubic()
     {
         dataSet.mode = LineChartDataSet.Mode.cubicBezier
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testDoesntDrawCircleHole()
     {
         dataSet.drawCircleHoleEnabled = false
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testDrawIcons()
     {
         dataSet.drawIconsEnabled = true
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
 }

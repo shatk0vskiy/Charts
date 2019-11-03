@@ -1,1 +1,1 @@
-github "uber/ios-snapshot-test-case"
+github "facebook/ios-snapshot-test-case" "master"

@@ -6,9 +6,7 @@
 //  Copyright © 2017 jc. All rights reserved.
 //
 
-#if canImport(UIKit)
-    import UIKit
-#endif
+import UIKit
 import Charts
 
 class PieChartViewController: DemoBaseViewController {
@@ -79,7 +77,7 @@ class PieChartViewController: DemoBaseViewController {
                                      icon: #imageLiteral(resourceName: "icon"))
         }
         
-        let set = PieChartDataSet(entries: entries, label: "Election Results")
+        let set = PieChartDataSet(values: entries, label: "Election Results")
         set.drawIconsEnabled = false
         set.sliceSpace = 2
         

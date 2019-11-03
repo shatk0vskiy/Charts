@@ -25,7 +25,7 @@ class PieChartTests: FBSnapshotTestCase
             entries.append(PieChartDataEntry(value: value, icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
         }
         
-        dataSet = PieChartDataSet(entries: entries, label: "First unit test data")
+        dataSet = PieChartDataSet(values: entries, label: "First unit test data")
         dataSet.drawIconsEnabled = false
         dataSet.iconsOffset = CGPoint(x: 0, y: 20.0)
         
@@ -50,38 +50,24 @@ class PieChartTests: FBSnapshotTestCase
     
     func testDefaultValues()
     {
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testHidesValues()
     {
         dataSet.drawValuesEnabled = false
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testDrawIcons()
     {
         dataSet.drawIconsEnabled = true
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     
     func testHideCenterLabel()
     {
         chart.drawCenterTextEnabled = false
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
-    }
-
-    func testHighlightDisabled()
-    {
-        chart.data?.dataSets[0].highlightEnabled = false
-        chart.highlightValue(x: 1.0, dataSetIndex: 0, callDelegate: false)
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
-    }
-
-    func testHighlightEnabled()
-    {
-        // by default, it's enabled
-        chart.highlightValue(x: 1.0, dataSetIndex: 0, callDelegate: false)
-        ChartsSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), overallTolerance: Snapshot.tolerance)
+        FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
 }
